@@ -1,0 +1,19 @@
+#!groovy
+properties([disableConcurrentBuilds()])
+
+    pipeline {
+     agent {
+         label 'master'
+     }
+     options {
+         buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
+         timestamps()
+     }
+     stages {
+         stage("First step") {
+             sh 'ssh root@172.20.10.12 \'cat /etc/lsb-release\''
+         }
+        
+        }
+    }
+}
