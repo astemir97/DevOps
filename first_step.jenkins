@@ -2,17 +2,31 @@
 properties([disableConcurrentBuilds()])
 
     pipeline {
-     agent {
-         label 'master'
-     }
-     options {
-         buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
-         timestamps()
-     }
-     stages {
-         stage("First step") {
-             sh 'ssh root@172.20.10.12 \'cat /etc/lsb-release\''
-         }
-        
+        agent {
+            label 'master'
         }
+        options {
+            buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
+            timestamps()
+        }
+        stages {
+            stage("First step") {
+                steps {
+                    echo "===================== Stat the Node ========================="
+                    sh 'ssh root@172.20.10.12 \'cat /etc/lsb-release\''
+                }
+             
+            }
+        }
+        stages {
+            stage("Build Docker Container") {
+                steps {
+                    echo "===================== Start Build Docker ===================="
+                    dir ('docker/tools') {
+                        sh 'docker build .'
+                    }
+                }
+            } 
+        } 
+        
     }
