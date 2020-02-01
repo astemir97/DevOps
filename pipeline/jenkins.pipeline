@@ -1,0 +1,44 @@
+#!groovy
+properties([disableConcurrentBuilds()])
+
+    pipeline {
+        agent {
+            label 'master'
+        }
+        triggers { pollSCM('* * * * *') }
+        options {
+            buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
+            timestamps()
+        }
+        stages {
+            stage("First step") {
+                steps {
+                    echo "===================== Stat the Node =========================="
+                    sh 'ssh root@192.168.1.7 \'cat /etc/lsb-release\''
+                }          
+            }
+            stage ("Docker login") {
+                steps {
+                    echo "===================== Docker Login ==========================="
+                    withCredentials ([usernamePassword(credentialsId: 'dockerhub_prod', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                        sh 'docker login -u $USERNAME -p $PASSWORD'
+                    }
+                }
+            }
+            stage("Build Docker Container") {
+                steps {
+                    echo "================ Start Build Docker on GitHub ================"
+                    dir ('docker/tools') {
+                        sh 'docker build -t astemir97/devops:latest .'
+                    }
+                }
+            }
+            stage("docker push") {
+                steps {
+                    echo "===================== Start Pushing Image ===================="
+                    sh 'docker push astemir97/devops:latest'
+                }
+            }
+        } 
+        
+    }
