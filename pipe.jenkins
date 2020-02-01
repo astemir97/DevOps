@@ -29,7 +29,7 @@ properties([disableConcurrentBuilds()])
                 steps {
                     echo "================ Start Build Docker on GitHub ================"
                     dir ('docker/tools') {
-                        sh 'docker build -t tools:latest .'
+                        sh 'docker build -t devops:latest .'
                     }
                 }
             }
