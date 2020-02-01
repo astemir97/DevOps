@@ -1,4 +1,4 @@
 FROM alpine
 RUN apk add python && apk add mysql-server && \
-  ls -la && \
+  ls -la
 CMD cat /etc/os-release
