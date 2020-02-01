@@ -21,7 +21,7 @@ properties([disableConcurrentBuilds()])
                 steps {
                     echo "===================== Start Build Docker ===================="
                     dir ('docker/tools') {
-                        sh 'docker build .'
+                        sh 'docker build -t tools:latest .'
                     }
                 }
             } 
