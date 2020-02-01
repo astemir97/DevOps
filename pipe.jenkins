@@ -20,7 +20,7 @@ properties([disableConcurrentBuilds()])
             stage ("Docker login") {
                 steps {
                     echo "===================== Docker Login ==========================="
-                    withCredentials ([usernamePassword(credentialsId: 'docker_prod', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                    withCredentials ([usernamePassword(credentialsId: 'dockerhub_prod', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                         sh 'docker login -u $USERNAME -p $PASSWORD'
                     }
                 }
