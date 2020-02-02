@@ -7,4 +7,4 @@ RUN apk add mysql-server && \
   apk add apache2 && \
   
 #### Start Apache web-server ####
-CMD rc-service apache2 restart
+CMD ls -la
