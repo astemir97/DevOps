@@ -5,7 +5,6 @@ FROM alpine
 RUN apk add mysql-server && \
   
   apk add apache2 && \
-  mkdir /var/www
   
 #### Start Apache web-server ####
 CMD rc-service apache2 restart
