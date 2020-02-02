@@ -2,9 +2,7 @@
 FROM alpine
 
 #### Install Mysql-Server && Apache web-server #### 
-RUN apk add mysql-server && \
-  
-  apk add apache2 && \
+RUN apk add mysql && apk add apache2
   
 #### Start Apache web-server ####
-CMD ls -la
+CMD cat /etc/os-release
