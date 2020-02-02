@@ -5,7 +5,6 @@ FROM alpine
 RUN apk add mysql-server && \
   
   apk add apache2 && \
-  mkdir /var/www
   
 COPY /devops/project/
 #### Start Apache web-server ####
