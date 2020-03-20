@@ -1,0 +1,32 @@
+---
+
+stages:
+     - build
+     - deploy
+
+variables:
+  GIT_CLEAN_FLAGS: none
+
+build:
+   stage: build
+   tags:
+     - node
+   before_script:
+     - sudo npm install
+     - sudo yarn install
+   script:
+     - sudo yarn webpack --mode production --bail -p --display errors-only
+   only:
+    - master
+
+deploy:
+   stage: deploy
+   tags:
+     - node
+   before_script:
+     - sudo docker-compose down
+   script:
+     - sudo docker-compose up -d
+   only:
+    - master
+
