@@ -1,0 +1,66 @@
+version: '3.3'
+
+services:
+  camunda:
+    build:
+      context: ./
+      dockerfile: dockerfile
+    environment:
+      SPRING_PROFILES_ACTIVE: dev
+      DB_URL: jdbc:postgresql://bpmdb:5432/postgres
+      RABBITMQ_HOST: rabbitmq
+      RABBITMQ_PORT: 5672
+      CREATE_QUEUE_NAME: createShipment
+      UPDATE_QUEUE_NAME: updateShipment
+      CREATE_SHABLON_QUEUE_NAME: createShablonShipment
+      CARD_UNLINK_QUEUE_NAME: cardUnlinkShipment
+      RESP_CREATE_QUEUE_NAME: createRespShipment
+      RESP_UPDATE_QUEUE_NAME: updateRespShipment
+      RESP_CREATE_SHABLON_QUEUE_NAME: createShablonRespShipment
+      RESP_CARD_UNLINK_QUEUE_NAME: cardUnlinkRespShipment
+    command: java -jar -Xmx256m bpm.jar
+    volumes:
+      - /data/bpm-service
+    ports:
+      - 8080:8080
+    depends_on:
+      - bpmdb
+      - rabbitmq
+
+  rabbitmock:
+    build:
+      context: ../rabbitmock
+      dockerfile: dockerfile
+    environment:
+      RABBITMQ_HOST: rabbitmq
+      RABBITMQ_PORT: 5672
+    command: java -jar -Xmx256m rabbitmock.jar
+    depends_on:
+      - rabbitmq
+      - bpmdb
+
+  bpmdb:
+    image: postgres:9.6
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: camunda
+      POSTGRES_PASSWORD: camunda
+    ports:
+      - 5532:5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    command: >
+      postgres
+      -c log_min_error_statement=panic
+      -c log_statement=none
+      -c log_error_verbosity=terse
+      -c max_connections=100
+      -c max_prepared_transactions=100
+
+  rabbitmq:
+    image: 'rabbitmq:3.6-management-alpine'
+    ports:
+      # The standard AMQP protocol port
+      - '5772:5672'
+      # HTTP management UI
+      - '15772:15672'
