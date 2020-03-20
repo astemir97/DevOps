@@ -1,0 +1,8 @@
+FROM openjdk:8-jdk-alpine
+
+### COPY FILE .JAR
+ARG JAR_FILE=target/*.project
+COPY ${JAR_FILE} project.jar
+
+### START PROJECT
+ENTRYPOINT ["java","-jar","/project.jar"]
