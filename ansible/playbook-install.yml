@@ -1,0 +1,53 @@
+---
+
+- hosts: 
+    - test
+  user: root
+  become: yes
+  tasks:
+
+
+## Yum-Utils
+    - name: install latest Yum-Utils
+      yum:
+         name: yum-utils
+         state: latest
+
+## Java
+    
+    - name: install Java-JDK v1.8
+      yum:
+         name: java-1.8.0-openjdk-devel
+         state: latest
+
+## MAVEN
+
+    - name: install the latest version of Apache Maven
+      yum:
+        name: maven
+        state: latest
+
+## DOCKER
+
+    - name: add Docker repo
+      get_url:
+        url: https://download.docker.com/linux/centos/docker-ce.repo
+        dest: /etc/yum.repos.d/docker-ce.repo
+
+    - name: install the latest version of Docker
+      yum:
+        name: docker
+        state: latest
+
+## Pyhton-pip 
+
+    - name: install the latest version of Python-pip
+      yum:
+        name: python-pip
+        state: latest
+
+## Docker-Compose
+
+    - name: install the latest version of Docker-compose from pip
+      pip:
+        name: docker-compose
