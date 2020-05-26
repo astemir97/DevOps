@@ -16,13 +16,13 @@ LABEL Stand="Dev" \
 #
 # ---------  Expose  ---------
 #
-EXPOSE 80 8080
+EXPOSE 22 80
 #
 #
 # ---------  Update CentOS  ---------
 #
 RUN yum update -y; \
-    yum install -y bash wget tar yum-utils net-tools vim \
+    yum install -y bash wget tar yum-utils openssh-server net-tools vim \
     device-mapper-persistent-data lvm2; \
     yum update -y ca-certificates --disablerepo=epel; \
     yum clean -y all;
