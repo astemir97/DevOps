@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+
+   stage_dev:
+      image: dev_mortgage:latest    # Name image
+      build: .                      # Path dockerfile
+      network_mode: host            # Strange network
+      restart: always               # Restart to crush
+     #ports:
+     #   - 8098:80
+     #   - 8099:8080
