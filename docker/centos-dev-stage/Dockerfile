@@ -82,7 +82,8 @@ RUN wget -O /tmp/tomcat-8.tar.gz $TOMCAT_LINK; \
     tar xzf /tmp/tomcat-8.tar.gz --strip-components=1 -C tomcat-8; \
     rm -rf tomcat-8/webapps/*; \
     ln -s /usr/local/tomcat-8 /usr/local/tomcat; \
-    rm -rf /tmp/*;
+    rm -rf /tmp/*; \
+    sh /usr/local/tomcat-8/bin/./startup.sh;
 COPY config/server.xml /usr/local/tomcat-8/conf/
 ENV CATALINA_HOME /usr/local/tomcat
 #
@@ -100,6 +101,6 @@ RUN rm -rf /var/cache/yum
 #
 # --------  Command run container ---------
 #
-CMD ["sh", "/usr/local/tomcat-8/bin/./startup.sh"]
+CMD ["nginx","-g", "daemon off;"]
 
 
