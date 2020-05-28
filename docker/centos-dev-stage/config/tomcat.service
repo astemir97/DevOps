@@ -1,0 +1,15 @@
+[Unit]
+Description=Tomcat
+After=syslog.target network.target
+
+[Service]
+Type=forking
+
+User=tomcat
+Group=tomcat
+
+ExecStart=/usr/local/tomcat-8/bin/catalina.sh start
+ExecStop=/usr/local/tomcat-8/bin/catalina.sh stop
+
+[Install]
+WantedBy=multi-user.target
