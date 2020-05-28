@@ -84,8 +84,13 @@ RUN wget -O /tmp/tomcat-8.tar.gz $TOMCAT_LINK; \
     rm -rf tomcat-8/webapps/*; \
     ln -s /usr/local/tomcat-8 /usr/local/tomcat; \
     rm -rf /tmp/*; \
-    sh /usr/local/tomcat-8/bin/./startup.sh;
+    useradd tomcat; \
+    chown -R tomcat:tomcat /usr/local/tomcat-8/; \
+    chmod +x /usr/local/tomcat-8/bin/*.sh;
+COPY config/tomcat.service /etc/systemd/system/
 COPY config/server.xml /usr/local/tomcat-8/conf/
+RUN systemctl daemon-reload; \
+    systemctl start tomcat;
 ENV CATALINA_HOME /usr/local/tomcat
 #
 #
