@@ -1,0 +1,11 @@
+version: '3.4'
+
+services:
+
+   stage_dev:
+      container_name: java-dev-stand
+      build: .                        
+      restart: always             
+      ports:
+        - 80:80
+        - 8080:8080
