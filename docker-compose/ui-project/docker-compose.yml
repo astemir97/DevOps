@@ -1,4 +1,0 @@
-nodejs:
-  build: .
-  ports:
-    - 9090:80
