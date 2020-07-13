@@ -1,0 +1,10 @@
+---
+
+- hosts: 
+    - tests_host
+  user: root
+  become: yes
+  tasks:
+     - package
+     - gitlab
+     -

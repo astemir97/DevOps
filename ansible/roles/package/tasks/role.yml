@@ -1,0 +1,43 @@
+## Standart utils install
+    - name: Standart utils install
+      yum:
+         name:
+            - yum-utils
+            - wget
+            - net-tools
+  	    - 
+
+         state: latest
+
+## Install Java-JDK v1.8
+    - name: Install Java-JDK v1.8
+      yum:
+         name: java-1.8.0-openjdk-devel
+         state: latest
+
+## Install the latest version of Apache Maven
+    - name: Install Apache Maven
+      yum:
+        name: maven
+        state: latest
+
+## Install the latest version of Docker
+    - name: Add Docker repo
+      get_url:
+        url: https://download.docker.com/linux/centos/docker-ce.repo
+        dest: /etc/yum.repos.d/docker-ce.repo
+
+    - name: Install the latest version of Docker
+      yum:
+        name: docker
+        state: latest
+
+## Docker-Compose
+   - name: install the latest version of Docker-compose from pip
+      pip:
+        name: docker-compose
+
+
+## Gitlab-Runner
+   - name: 
+
