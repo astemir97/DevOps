@@ -1,0 +1,32 @@
+version: '3.3'
+
+services:
+
+     mysql:
+       image: mysql
+       container_name: mysql:latest
+       command: --default-authentication-plugin=mysql_native_password
+       environment:
+           mediawiki: 'http//mediawiki:8080'
+           MYSQL_DATABASE: 'mediawiki'
+           MYSQL_USER: 'astemir97'
+           MYSQL_PASSWORD: '5554268w'
+           MYSQL_ROOT_PASSWORD: '5554268w'
+       restart: always
+       networks:
+          - mediawiki
+
+     mediawiki:
+       image: mediawiki:latest
+       environment:
+         mysql: 'http://mysql:3306'
+       container_name: mediawiki
+       restart: always
+       networks:
+          - mediawiki
+       ports:
+            - 8080:80
+
+networks:
+    mediawiki:
+       external: true
