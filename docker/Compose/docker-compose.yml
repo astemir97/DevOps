@@ -9,9 +9,9 @@ services:
        environment:
            mediawiki: 'http//mediawiki:8080'
            MYSQL_DATABASE: 'mediawiki'
-           MYSQL_USER: 'astemir97'
-           MYSQL_PASSWORD: '5554268w'
-           MYSQL_ROOT_PASSWORD: '5554268w'
+           MYSQL_USER: 'Имя юзера'
+           MYSQL_PASSWORD: 'Свой пароль'
+           MYSQL_ROOT_PASSWORD: 'Свой пароль'
        restart: always
        networks:
           - mediawiki
