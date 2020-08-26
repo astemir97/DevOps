@@ -1,10 +1,13 @@
----
-
-- hosts: 
-    - tests_host
-  user: root
-  become: yes
-  tasks:
-     - package
-     - gitlab
-     -
+--- 
+- 
+  become: true
+  gather_facts: true
+  hosts: devops
+  name: "Start stage"
+  roles: 
+    - docker-all
+    - java
+    - maven
+   # - nodejs
+   # - git
+   # - gitlab-runner
