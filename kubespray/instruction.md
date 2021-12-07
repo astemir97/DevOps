@@ -48,5 +48,30 @@ MarkupSafe==1.1.1
 pip install package_nam.py or package_name.whl
 ```
 
+Редактируем файл inventory:
+cp -R ~/kubespray/inventory/sample ~/kubespray/inventory/(название контура)
 
+kub-master-1 ansible_host=192.168.0.100 ip=192.168.0.100
+kub-master-2 ansible_host=ip=
+kub-node-1 ansible_host= ip=
+kub-node-2 ansible_host= ip=
+
+[kube-master]
+kub-master-1
+kub-master-2
+
+[etcd]
+kub-master-1
+kub-master-2
+
+[kube-node]
+kub-node-1
+kub-node-2
+
+[kube-ingress]
+kub-ingress-1
+
+[k8s-cluster:children]
+kube-master
+kube-node
 
