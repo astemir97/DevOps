@@ -97,7 +97,6 @@ ingress_nginx_nodeselector:
 ingress_nginx_namespace: "ingress-nginx"
 ingress_nginx_insecure_port: 80
 ingress_nginx_secure_port: 443
-
 ```
 
 Запускем установку:
