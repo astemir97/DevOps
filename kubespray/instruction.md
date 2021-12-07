@@ -83,3 +83,9 @@ kub-ingress-1
 kube-master
 kube-node
 ```
+
+Редактируем k8s-cluster/k8s-cluster.yml. 
+```sh
+kube_network_plugin: flannel
+cluster_name: (имя кластера)
+```
