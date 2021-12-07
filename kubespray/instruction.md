@@ -30,7 +30,7 @@ git clone https://github.com/kubernetes-sigs/kubespray
 
 Так же, необходимо позаботиться о том, как перетащить на сервер модули питона.
 Если мы глянем в файл: requirements.txt, то увидим все необходимые зависимости, которые требуются для запуска Ansible:
-
+```sh
 ansible==3.4.0
 ansible-base==2.10.15
 cryptography==2.8
@@ -41,6 +41,7 @@ jmespath==0.9.5
 ruamel.yaml==0.16.10
 ruamel.yaml.clib==0.2.4
 MarkupSafe==1.1.1
+```
 
 Установку пакетов производим с помощью pip:
 ```sh
