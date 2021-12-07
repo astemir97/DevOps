@@ -49,8 +49,11 @@ pip install package_nam.py or package_name.whl
 ```
 
 Редактируем файл inventory:
+```sh
 cp -R ~/kubespray/inventory/sample ~/kubespray/inventory/(название контура)
+```
 
+```sh
 kub-master-1 ansible_host=192.168.0.100 ip=192.168.0.100
 kub-master-2 ansible_host=ip=
 kub-node-1 ansible_host= ip=
@@ -74,4 +77,4 @@ kub-ingress-1
 [k8s-cluster:children]
 kube-master
 kube-node
-
+```
