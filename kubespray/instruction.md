@@ -54,7 +54,7 @@ cp -R kubespray/inventory/sample kubespray/inventory/(название конт�
 ```
 
 ```sh
-kub-master-1 ansible_host=192.168.0.100 ip=192.168.0.100
+kub-master-1 ansible_host=192.168.0.100(к примеру) ip=192.168.0.100(к примеру)
 kub-master-2 ansible_host=ip=
 kub-node-1 ansible_host= ip=
 kub-node-2 ansible_host= ip=
