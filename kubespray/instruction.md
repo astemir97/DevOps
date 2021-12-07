@@ -88,7 +88,13 @@ cluster_name: (имя кластера)
 ```sh
 flannel_interface_regexp: ‘10\\.10\\.0\\.\\d{1,3}’
 ```
-
+Создаем там файл kube-ingress.yml с содержимым:
+```sh
+node_labels:
+  node-role.kubernetes.io/ingress: ""
+node_taints:
+  - "node-role.kubernetes.io/ingress=:NoSchedule"
+```
 Правим group_vars/k8s-cluster/addons.yml:
 ```sh
 ingress_nginx_enabled: true
