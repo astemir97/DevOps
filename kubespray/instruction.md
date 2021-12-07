@@ -57,7 +57,7 @@ pip install package_nam.py or package_name.whl
 cp -R kubespray/inventory/sample kubespray/inventory/local/inventory.ini
 ```
 
-К примеру, у нас есть 4 ноды (2 мастер и 2 вычислительные)
+К примеру, у нас есть 4 ноды (1 мастер и 2 воркер-ноды)
 ```sh
 kub-master-1 ansible_host=192.168.0.100(к примеру) ip=192.168.0.100(к примеру)
 kub-node-1 ansible_host= ip=
