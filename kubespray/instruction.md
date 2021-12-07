@@ -60,24 +60,18 @@ cp -R kubespray/inventory/sample kubespray/inventory/(название конт�
 К примеру, у нас есть 4 ноды (2 мастер и 2 вычислительные)
 ```sh
 kub-master-1 ansible_host=192.168.0.100(к примеру) ip=192.168.0.100(к примеру)
-kub-master-2 ansible_host=ip=
 kub-node-1 ansible_host= ip=
 kub-node-2 ansible_host= ip=
 
 [kube-master]
 kub-master-1
-kub-master-2
 
 [etcd]
 kub-master-1
-kub-master-2
 
 [kube-node]
 kub-node-1
 kub-node-2
-
-[kube-ingress]
-kub-ingress-1
 
 [k8s-cluster:children]
 kube-master
