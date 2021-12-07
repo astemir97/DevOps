@@ -99,3 +99,8 @@ ingress_nginx_insecure_port: 80
 ingress_nginx_secure_port: 443
 
 ```
+
+Запускем установку:
+```sh
+ansible-playbook -u root -k -i inventory/dev/inventory.ini -b --diff cluster.yml
+```
