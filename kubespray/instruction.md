@@ -81,6 +81,7 @@ kube-node
 Редактируем group_vars/k8s-cluster/k8s-cluster.yml:
 ```sh
 kube_network_plugin: flannel
+kube_proxy_mode: iptables
 cluster_name: (имя кластера)
 ```
 
