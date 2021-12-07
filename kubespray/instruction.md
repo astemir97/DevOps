@@ -1,5 +1,7 @@
 В первую очередь, необходмо открыть 22 порт для исходящего подключение от будущей мастер-ноды
 
+<h2>Подготовка серверов</h2>
+
 Подготавливаем окружение сервера:
 ```sh
 yum install epel-release python-pip git
@@ -47,6 +49,8 @@ MarkupSafe==1.1.1
 ```sh
 pip install package_nam.py or package_name.whl
 ```
+
+<h2>Подготовка Kubespray</h2>
 
 Редактируем файл inventory:
 ```sh
