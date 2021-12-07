@@ -50,7 +50,7 @@ pip install package_nam.py or package_name.whl
 
 Редактируем файл inventory:
 ```sh
-cp -R ~/kubespray/inventory/sample ~/kubespray/inventory/(название контура)
+cp -R kubespray/inventory/sample kubespray/inventory/(название контура)
 ```
 
 ```sh
