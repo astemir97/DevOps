@@ -78,13 +78,13 @@ kube-master
 kube-node
 ```
 
-Редактируем k8s-cluster/k8s-cluster.yml. 
+Редактируем group_vars/k8s-cluster/k8s-cluster.yml. 
 ```sh
 kube_network_plugin: flannel
 cluster_name: (имя кластера)
 ```
 
-Правим k8s-cluster/k8s-net-flannel.yml, в зависимости от вашей подсети выставляем регекс, к примеру:
+Правим group_vars/k8s-cluster/k8s-net-flannel.yml, в зависимости от вашей подсети выставляем регекс, к примеру:
 ```sh
 flannel_interface_regexp: ‘10\\.10\\.0\\.\\d{1,3}’
 ```
