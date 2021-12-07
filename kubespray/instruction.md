@@ -2,7 +2,7 @@
 
 Подготавливаем окружение сервера:
 ```sh
-yum install python-pip</code>
+yum install python-pip
 ```
 
 Далее, отключаем своп и файрвол:
@@ -11,14 +11,16 @@ swapoff -a
 firewall-cmd --state
 systemctl stop firewalld
 systemctl disable firewalld
-</code>
 ```
 
-
 Зайти на узлы и сгенерить для них ssh-ключи:
+```sh
 ssh-keygen -t rsa
+```
 
 Скопируйте сгенерированный ключи с каждого узла на сервер, от куда будет производится установка кубера:
+```sh
 ssh-copy-id root@host
+```
 
 
