@@ -54,7 +54,7 @@ pip install package_nam.py or package_name.whl
 
 Редактируем файл inventory:
 ```sh
-cp -R kubespray/inventory/sample kubespray/inventory/(название контура)
+cp -R kubespray/inventory/sample kubespray/inventory/(название контура)/cluster.yml
 ```
 
 К примеру, у нас есть 4 ноды (2 мастер и 2 вычислительные)
