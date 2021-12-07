@@ -94,11 +94,8 @@ flannel_interface_regexp: ‘10\\.10\\.0\\.\\d{1,3}’
 ingress_nginx_enabled: true
 ingress_nginx_nodeselector:
   kubernetes.io/os: "linux"
-ingress_nginx_tolerations:
-  - key: "node-role.kubernetes.io/node"
-    operator: "Equal"
-    value: ""
-    effect: "NoSchedule"
 ingress_nginx_namespace: "ingress-nginx"
 ingress_nginx_insecure_port: 80
 ingress_nginx_secure_port: 443
+
+```
