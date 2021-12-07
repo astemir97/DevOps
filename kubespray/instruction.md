@@ -1,15 +1,19 @@
 В первую очередь, необходмо открыть 22 порт для исходящего подключение от сервера, который будет производить установку Кубера.
 
 Подготавливаем окружение сервера:
-<code>yum install python-pip</code>
+```sh
+yum install python-pip</code>
+```
 
 Далее, отключаем своп и файрвол:
-<code>
+```sh
 swapoff -a 
 firewall-cmd --state
 systemctl stop firewalld
 systemctl disable firewalld
 </code>
+```
+
 
 Зайти на узлы и сгенерить для них ssh-ключи:
 ssh-keygen -t rsa
