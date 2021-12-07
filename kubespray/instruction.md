@@ -54,7 +54,7 @@ pip install package_nam.py or package_name.whl
 
 Редактируем файл inventory:
 ```sh
-cp -R kubespray/inventory/sample kubespray/inventory/(название контура)/cluster.yml
+cp -R kubespray/inventory/sample kubespray/inventory/local/inventory.ini
 ```
 
 К примеру, у нас есть 4 ноды (2 мастер и 2 вычислительные)
@@ -101,5 +101,5 @@ ingress_nginx_secure_port: 443
 
 Запускем установку:
 ```sh
-ansible-playbook -u root -k -i inventory/(имя контура)/inventory.ini -b --diff cluster.yml
+ansible-playbook -u root -k -i inventory/(имя контура)/inventory.ini -b --diff inventory.ini
 ```
