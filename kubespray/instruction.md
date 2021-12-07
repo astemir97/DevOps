@@ -78,7 +78,7 @@ kube-master
 kube-node
 ```
 
-Редактируем group_vars/k8s-cluster/k8s-cluster.yml. 
+Редактируем group_vars/k8s-cluster/k8s-cluster.yml:
 ```sh
 kube_network_plugin: flannel
 cluster_name: (имя кластера)
@@ -88,3 +88,17 @@ cluster_name: (имя кластера)
 ```sh
 flannel_interface_regexp: ‘10\\.10\\.0\\.\\d{1,3}’
 ```
+
+Правим group_vars/k8s-cluster/addons.yml
+```sh
+ingress_nginx_enabled: true
+ingress_nginx_nodeselector:
+  kubernetes.io/os: "linux"
+ingress_nginx_tolerations:
+  - key: "node-role.kubernetes.io/node"
+    operator: "Equal"
+    value: ""
+    effect: "NoSchedule"
+ingress_nginx_namespace: "ingress-nginx"
+ingress_nginx_insecure_port: 80
+ingress_nginx_secure_port: 443
