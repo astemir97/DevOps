@@ -102,5 +102,5 @@ ingress_nginx_secure_port: 443
 
 Запускем установку:
 ```sh
-ansible-playbook -u root -k -i inventory/dev/inventory.ini -b --diff cluster.yml
+ansible-playbook -u root -k -i inventory/(имя контура)/inventory.ini -b --diff cluster.yml
 ```
