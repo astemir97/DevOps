@@ -89,3 +89,8 @@ kube-node
 kube_network_plugin: flannel
 cluster_name: (имя кластера)
 ```
+
+Правим k8s-cluster/k8s-net-flannel.yml, в зависимости от вашей подсети выставляем регекс, к примеру:
+```sh
+flannel_interface_regexp: ‘10\\.10\\.0\\.\\d{1,3}’
+```
